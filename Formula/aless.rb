@@ -1,25 +1,25 @@
 class Aless < Formula
   desc "Terminal viewer and JSON CLI for JSON, YAML, TOML, CSV, XML and more"
   homepage "https://aless.tabnas.dev"
-  version "0.4.3"
+  version "0.4.4"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/rjrodger/aless/releases/download/v0.4.3/aless-aarch64-apple-darwin.tar.xz"
-      sha256 "372a2b8792caaeba818a2c831019025fefdd464971f17c1d9f9c6b10394bd3d3"
+      url "https://github.com/rjrodger/aless/releases/download/v0.4.4/aless-aarch64-apple-darwin.tar.xz"
+      sha256 "97e6fe71957b7bf946d08cd1510ec92414f1aa8cde507d1dda20a878963c7176"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/rjrodger/aless/releases/download/v0.4.3/aless-x86_64-apple-darwin.tar.xz"
-      sha256 "e18ce85bceef2e6ca6c9f9596947e808dc6c43f530eb39eeba25ac62cdaaed43"
+      url "https://github.com/rjrodger/aless/releases/download/v0.4.4/aless-x86_64-apple-darwin.tar.xz"
+      sha256 "80ba7d7582bb4909a890fba7cdb3c5c5fc7986d7bddd73fa4653b1d808339d8e"
     end
   end
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/rjrodger/aless/releases/download/v0.4.3/aless-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "efeafa9f94854dddb02e5e1fc24c7f29d03b46f8dc2128eecde4625abafbc8d1"
+      url "https://github.com/rjrodger/aless/releases/download/v0.4.4/aless-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "1ccf04c5102573ce7f9f94fb4ef3425f551a4638c4857745b0627fc73455f3c5"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/rjrodger/aless/releases/download/v0.4.3/aless-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "51e88aaff25fd0d3509f64eb10dbaf9137c89a6a664fa41742f059b66e48e3ae"
+      url "https://github.com/rjrodger/aless/releases/download/v0.4.4/aless-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "72470976ecc51f95e8745eff4f17077f12f5b8e52525d4906407f5db0b8a3bf5"
     end
   end
   license "MIT"
