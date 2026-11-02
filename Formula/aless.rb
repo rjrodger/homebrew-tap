@@ -1,25 +1,25 @@
 class Aless < Formula
-  desc "Terminal viewer and JSON CLI for JSON, YAML, TOML, CSV, XML and more"
+  desc "Terminal viewer for JSON, YAML, TOML, CSV, XML and more, as one tree"
   homepage "https://aless.tabnas.dev"
-  version "0.5.0"
+  version "0.6.0"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/rjrodger/aless/releases/download/v0.5.0/aless-aarch64-apple-darwin.tar.xz"
-      sha256 "b171829967e0be7e5924a4d06a7353275c6db8856003c8f65fb1f693fadabd26"
+      url "https://github.com/rjrodger/aless/releases/download/v0.6.0/aless-aarch64-apple-darwin.tar.xz"
+      sha256 "5175c771a9801372d046bf7de46d179b1aa0aab9b4e98211db865d4248ee09d0"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/rjrodger/aless/releases/download/v0.5.0/aless-x86_64-apple-darwin.tar.xz"
-      sha256 "d5ad8547c58606f9c14969f7d38161484f77b8d64ed5bffa3904b1902dd6a132"
+      url "https://github.com/rjrodger/aless/releases/download/v0.6.0/aless-x86_64-apple-darwin.tar.xz"
+      sha256 "e369a73b2f277f7bddea923b266aabc3a16b332b7930abeb1ba37ed9b9d32048"
     end
   end
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/rjrodger/aless/releases/download/v0.5.0/aless-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "55ee8171f23bf33df944eb06846265b194ec8a22bcb769805b6aa2978074b7cc"
+      url "https://github.com/rjrodger/aless/releases/download/v0.6.0/aless-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "5499a91f52786429f7a642e69e1b0c8c3b4c731e8ff8afd4b82ae9b803ef6ae2"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/rjrodger/aless/releases/download/v0.5.0/aless-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "6c9250a13aafaf97a2c54d0059df2b198ba6680636da007007fe14de7ee1bbdb"
+      url "https://github.com/rjrodger/aless/releases/download/v0.6.0/aless-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "5d067b4a0cf5c5483dcbff8d8692bf83ee97f5016dce5ebdffa0f2703a4c0847"
     end
   end
   license "MIT"
@@ -86,6 +86,8 @@ class Aless < Formula
 
   test do
     assert_match "aless #{version}", shell_output("#{bin}/aless --version")
-    assert_equal '{"a":[1,2]}', pipe_output("#{bin}/aless --json --compact", '{"a": [1, 2]}').strip
+    assert_match ".SH SYNOPSIS", shell_output("#{bin}/aless --generate man")
+    # A viewer: without a terminal it refuses to start, with status 2.
+    assert_match "terminal", pipe_output("#{bin}/aless 2>&1", '{"a": [1, 2]}', 2)
   end
 end
